@@ -1,5 +1,9 @@
 services:
     -
-        class: Tooling\EloquentFilters\PHPStan\Rules\FilteringRule
+        class: Tooling\EloquentFilters\PhpStan\Rules\BuilderUsesHasFiltersTrait
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\EloquentFilters\PhpStan\Rules\BuilderImplementsFilterableContract
         tags:
             - phpstan.rules.rule
