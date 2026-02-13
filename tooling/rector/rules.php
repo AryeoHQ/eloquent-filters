@@ -1,7 +1,9 @@
 <?php
 
-use Tooling\EloquentFilters\Rector\Rules\AddContractAndTraitForFilterableBuilders;
+use Tooling\EloquentFilters\Rector\Rules\AddHasFiltersTraitToBuilders;
+use Tooling\EloquentFilters\Rector\Rules\AddFilterableContractToBuilders;
 
 return [
-    AddContractAndTraitForFilterableBuilders::class,
+    AddHasFiltersTraitToBuilders::class,
+    AddFilterableContractToBuilders::class,
 ];
