@@ -18,7 +18,7 @@ class BuilderUsesHasFiltersTraitTest extends RuleTestCase
 
     private function getFixturePath(string $filename): string
     {
-        return __DIR__.'/../../../../Fixtures/Variations/'.$filename;
+        return __DIR__.'/../../../../Fixtures/'.$filename;
     }
 
     #[Test]
