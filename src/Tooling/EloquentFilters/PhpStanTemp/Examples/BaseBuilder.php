@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tooling\EloquentFilters\PHPStan\Examples;
+namespace Tooling\EloquentFilters\PhpStanTemp\Examples;
 
 use Illuminate\Database\Eloquent\Builder;
 use Support\Database\Eloquent\Contracts\Filterable;
