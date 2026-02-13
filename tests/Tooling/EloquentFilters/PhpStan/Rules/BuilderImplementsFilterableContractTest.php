@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Tooling\EloquentFilters\PHPStan\Rules;
+namespace Tests\Tooling\EloquentFilters\PhpStan\Rules;
 
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
