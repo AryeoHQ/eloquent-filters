@@ -25,17 +25,16 @@ final class BuilderImplementsFilterableContract extends Rule
 
     public function shouldHandle(Node $node, Scope $scope): bool
     {
-        return $this->inherits($node, Builder::class, $this->reflectionProvider);
+        return $this->inherits($node, Builder::class, $this->reflectionProvider)
+            && ! $this->inherits($node, Filterable::class, $this->reflectionProvider);
     }
 
     public function handle(Node $node, Scope $scope): void
     {
-        if (! $this->inherits($node, Filterable::class, $this->reflectionProvider)) {
-            $this->error(
-                message: 'Classes with Filter attributes must implement the Support\Database\Eloquent\Contracts\Filterable contract.',
-                line: $node->name->getStartLine(),
-                identifier: 'filtering.attributes.contract'
-            );
-        }
+        $this->error(
+            message: 'Classes with Filter attributes must implement the Support\Database\Eloquent\Contracts\Filterable contract.',
+            line: $node->name->getStartLine(),
+            identifier: 'filtering.attributes.contract'
+        );
     }
 }

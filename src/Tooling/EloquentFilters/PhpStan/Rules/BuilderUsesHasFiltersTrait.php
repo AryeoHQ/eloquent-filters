@@ -25,17 +25,16 @@ final class BuilderUsesHasFiltersTrait extends Rule
 
     public function shouldHandle(Node $node, Scope $scope): bool
     {
-        return $this->inherits($node, Builder::class, $this->reflectionProvider);
+        return $this->inherits($node, Builder::class, $this->reflectionProvider)
+            && ! $this->inherits($node, HasFilters::class, $this->reflectionProvider);
     }
 
     public function handle(Node $node, Scope $scope): void
     {
-        if (! $this->inherits($node, HasFilters::class, $this->reflectionProvider)) {
-            $this->error(
-                message: 'Classes with Filter attributes must use the Support\Database\Eloquent\HasFilters trait.',
-                line: $node->name->getStartLine(),
-                identifier: 'filtering.attributes.trait'
-            );
-        }
+        $this->error(
+            message: 'Classes with Filter attributes must use the Support\Database\Eloquent\HasFilters trait.',
+            line: $node->name->getStartLine(),
+            identifier: 'filtering.attributes.trait'
+        );
     }
 }
