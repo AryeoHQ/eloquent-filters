@@ -6,11 +6,12 @@ namespace Tests\Tooling\EloquentFilters\Rector\Rules;
 
 use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\Tooling\EloquentFilters\Concerns\GetsFixtures;
+use Tooling\Rector\Testing\ParsesNodes;
+use Tooling\Rector\Testing\ResolvesRectorRules;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tooling\Rector\Rules\Provides\ParsesNodes;
 use Support\Database\Eloquent\Contracts\Filterable;
 use Tooling\Rector\Rules\Provides\ValidatesInheritance;
+use Tests\Tooling\EloquentFilters\Concerns\GetsFixtures;
 use Tooling\EloquentFilters\Rector\Rules\AddFilterableContractToBuilders;
 
 #[CoversClass(AddFilterableContractToBuilders::class)]
@@ -18,12 +19,13 @@ class AddFilterableContractToBuildersTest extends TestCase
 {
     use GetsFixtures;
     use ParsesNodes;
+    use ResolvesRectorRules;
     use ValidatesInheritance;
 
     #[Test]
     public function it_adds_contract_to_builders(): void
     {
-        $rule = app(AddFilterableContractToBuilders::class);
+        $rule = $this->resolveRule(AddFilterableContractToBuilders::class);
 
         $classNode = $this->getClassNode($this->getFixturePath('UserBuilderNoContract.php'));
 
@@ -31,13 +33,13 @@ class AddFilterableContractToBuildersTest extends TestCase
 
         $result = $rule->refactor($classNode);
 
-        $this->assertTrue($this->inherits($result, 'Filterable'));
+        $this->assertTrue($this->inherits($result, Filterable::class));
     }
 
     #[Test]
     public function it_does_not_add_contract_to_non_builder_classes(): void
     {
-        $rule = app(AddFilterableContractToBuilders::class);
+        $rule = $this->resolveRule(AddFilterableContractToBuilders::class);
 
         $classNode = $this->getClassNode($this->getFixturePath('NonBuilderClass.php'));
 
@@ -49,7 +51,7 @@ class AddFilterableContractToBuildersTest extends TestCase
     #[Test]
     public function it_does_not_add_contract_to_complete_classes(): void
     {
-        $rule = app(AddFilterableContractToBuilders::class);
+        $rule = $this->resolveRule(AddFilterableContractToBuilders::class);
 
         $classNode = $this->getClassNode($this->getFixturePath('UserBuilder.php'));
 

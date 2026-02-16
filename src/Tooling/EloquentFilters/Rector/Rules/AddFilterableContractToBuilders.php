@@ -21,8 +21,7 @@ final class AddFilterableContractToBuilders extends Rule
 {
     public function shouldHandle(Node $node): bool
     {
-        return $node->extends?->toString() === Builder::class
-            || $node->extends?->toString() === 'Builder';
+        return $this->inherits($node, Builder::class);
     }
 
     public function handle(Node $node): Node
