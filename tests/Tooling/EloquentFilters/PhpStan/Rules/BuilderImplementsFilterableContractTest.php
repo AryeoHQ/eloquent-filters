@@ -7,13 +7,16 @@ use PHPStan\Testing\RuleTestCase;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tooling\EloquentFilters\PhpStan\Rules\BuilderImplementsFilterableContract;
+use PHPStan\Reflection\ReflectionProvider;
 
 #[CoversClass(BuilderImplementsFilterableContract::class)]
 class BuilderImplementsFilterableContractTest extends RuleTestCase
 {
     protected function getRule(): Rule
     {
-        return new BuilderImplementsFilterableContract;
+        return new BuilderImplementsFilterableContract(
+            self::getContainer()->getByType(ReflectionProvider::class)
+        );
     }
 
     private function getFixturePath(string $filename): string

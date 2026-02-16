@@ -7,13 +7,16 @@ use PHPStan\Testing\RuleTestCase;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Tooling\EloquentFilters\PhpStan\Rules\BuilderUsesHasFiltersTrait;
+use PHPStan\Reflection\ReflectionProvider;
 
 #[CoversClass(BuilderUsesHasFiltersTrait::class)]
 class BuilderUsesHasFiltersTraitTest extends RuleTestCase
 {
     protected function getRule(): Rule
     {
-        return new BuilderUsesHasFiltersTrait;
+        return new BuilderUsesHasFiltersTrait(
+            self::getContainer()->getByType(ReflectionProvider::class)
+        );
     }
 
     private function getFixturePath(string $filename): string
