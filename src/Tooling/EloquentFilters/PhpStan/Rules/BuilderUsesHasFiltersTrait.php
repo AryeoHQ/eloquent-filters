@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
-use PHPStan\Reflection\ReflectionProvider;
 use Support\Database\Eloquent\HasFilters;
 use Tooling\PhpStan\Rules\Rule;
 use Tooling\Rules\Attributes\NodeType;
@@ -19,14 +18,10 @@ use Tooling\Rules\Attributes\NodeType;
 #[NodeType(Class_::class)]
 final class BuilderUsesHasFiltersTrait extends Rule
 {
-    public function __construct(
-        public readonly ReflectionProvider $reflectionProvider,
-    ) {}
-
     public function shouldHandle(Node $node, Scope $scope): bool
     {
-        return $this->inherits($node, Builder::class, $this->reflectionProvider)
-            && ! $this->inherits($node, HasFilters::class, $this->reflectionProvider);
+        return $this->inherits($node, Builder::class)
+            && ! $this->inherits($node, HasFilters::class);
     }
 
     public function handle(Node $node, Scope $scope): void
