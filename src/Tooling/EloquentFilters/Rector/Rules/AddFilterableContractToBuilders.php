@@ -10,6 +10,7 @@ use PhpParser\Node\Stmt\Class_;
 use Support\Database\Eloquent\Contracts\Filterable;
 use Tooling\Rector\Rules\Definitions\Attributes\Definition;
 use Tooling\Rector\Rules\Rule;
+use Tooling\Rector\Rules\Samples\Attributes\Sample;
 use Tooling\Rules\Attributes\NodeType;
 
 /**
@@ -17,16 +18,18 @@ use Tooling\Rules\Attributes\NodeType;
  */
 #[Definition('Add the Filterable contract to the eloquent builder class')]
 #[NodeType(Class_::class)]
+#[Sample('eloquent-filters.rector.rules.samples')]
 final class AddFilterableContractToBuilders extends Rule
 {
     public function shouldHandle(Node $node): bool
     {
-        return $this->inherits($node, Builder::class);
+        return $this->inherits($node, Builder::class)
+            && $this->doesNotInherit($node, Filterable::class);
     }
 
     public function handle(Node $node): Node
     {
-        $node = $this->ensureInterfaceIsImplemented($node, Filterable::class);
+        $node = $this->addInterface($node, Filterable::class);
 
         return $node;
     }
