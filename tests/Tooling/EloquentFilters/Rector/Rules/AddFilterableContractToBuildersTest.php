@@ -57,6 +57,6 @@ class AddFilterableContractToBuildersTest extends TestCase
 
         $result = $rule->refactor($classNode);
         
-        $this->assertTrue($this->inherits($result, Filterable::class));
+        $this->assertNull($result);
     }
 }

@@ -57,6 +57,6 @@ class AddHasFiltersTraitToBuildersTest extends TestCase
 
         $result = $rule->refactor($classNode);
         
-        $this->assertTrue($this->inherits($result, HasFilters::class));
+        $this->assertNull($result);
     }
 }

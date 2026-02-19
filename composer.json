@@ -20,7 +20,7 @@
         "laravel/framework": "^12.36"
     },
     "require-dev": {
-        "aryeo/tooling-laravel": "0.0.14",
+        "aryeo/tooling-laravel": "dev-rule-consistency-and-feature-improvements",
         "brianium/paratest": "^7.14",
         "nikic/php-parser": "^5.6",
         "orchestra/testbench": "^10.6",
@@ -57,6 +57,11 @@
         }
     },
     "extra": {
+        "laravel": {
+            "providers": [
+                "Support\\Database\\Eloquent\\EloquentFiltersServiceProvider"
+            ]
+        },
         "tooling": {
             "phpstan": "tooling/phpstan/rules.neon",
             "rector": {
