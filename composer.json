@@ -20,7 +20,7 @@
         "laravel/framework": "^12.36"
     },
     "require-dev": {
-        "aryeo/tooling-laravel": "0.0.17",
+        "aryeo/tooling-laravel": "0.0.18",
         "brianium/paratest": "^7.14",
         "nikic/php-parser": "^5.6",
         "orchestra/testbench": "^10.6",
@@ -65,7 +65,7 @@
         "tooling": {
             "phpstan": "tooling/phpstan/rules.neon",
             "rector": {
-                "rules": "tooling/rector/rules.php"
+                "configured_rules": "tooling/rector/configured-rules.php"
             }
         }
     },
