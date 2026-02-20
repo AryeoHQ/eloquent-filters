@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c71b7959f545036d0d62940230f32dd",
+    "content-hash": "28bddb65c872c6e71e0239eea5c4a891",
     "packages": [
         {
             "name": "brick/math",
@@ -5798,16 +5798,16 @@
     "packages-dev": [
         {
             "name": "aryeo/tooling-laravel",
-            "version": "0.0.17",
+            "version": "0.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AryeoHQ/tooling-laravel.git",
-                "reference": "8534f143634fb2c99a4fd72eebe47d47c5d0f702"
+                "reference": "8043216789760e1c5470c52f12a2ad6a56f5a949"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AryeoHQ/tooling-laravel/zipball/8534f143634fb2c99a4fd72eebe47d47c5d0f702",
-                "reference": "8534f143634fb2c99a4fd72eebe47d47c5d0f702",
+                "url": "https://api.github.com/repos/AryeoHQ/tooling-laravel/zipball/8043216789760e1c5470c52f12a2ad6a56f5a949",
+                "reference": "8043216789760e1c5470c52f12a2ad6a56f5a949",
                 "shasum": ""
             },
             "require": {
@@ -5876,10 +5876,10 @@
             ],
             "description": "Development tooling for Laravel",
             "support": {
-                "source": "https://github.com/AryeoHQ/tooling-laravel/tree/0.0.17",
+                "source": "https://github.com/AryeoHQ/tooling-laravel/tree/0.0.18",
                 "issues": "https://github.com/AryeoHQ/tooling-laravel/issues"
             },
-            "time": "2026-02-19T15:22:26+00:00"
+            "time": "2026-02-19T22:18:06+00:00"
         },
         {
             "name": "brianium/paratest",
