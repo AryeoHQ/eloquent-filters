@@ -1,17 +1,18 @@
 <?php
 
-namespace Tests\Support\Database\Eloquent;
+declare(strict_types=1);
 
-use Tests\TestCase;
-use Tests\Fixtures\Role;
-use Tests\Fixtures\User;
+namespace Support\Database\Eloquent;
+
 use Illuminate\Http\Request;
-use PHPUnit\Metadata\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\Test;
-use Support\Database\Eloquent\HasFilters;
+use Tests\Fixtures\Support\Role;
+use Tests\Fixtures\Support\User;
+use Tests\TestCase;
 
-#[CoversClass(HasFilters::class)]
-class FilterableEloquentBuilderTest extends TestCase
+#[CoversTrait(HasFilters::class)]
+class HasFiltersTest extends TestCase
 {
     #[Test]
     public function filter_method_proxies_to_scope_methods(): void

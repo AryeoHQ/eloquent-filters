@@ -17,15 +17,15 @@
     ],
     "require": {
         "php": "^8.4",
-        "laravel/framework": "^12.36"
+        "aryeo/tooling-laravel": "^0.0.27",
+        "laravel/framework": "^12.36",
+        "nikic/php-parser": "^5.7",
+        "phpstan/phpstan": "^2.1"
     },
     "require-dev": {
-        "aryeo/tooling-laravel": "0.0.17",
         "brianium/paratest": "^7.14",
-        "nikic/php-parser": "^5.6",
         "orchestra/testbench": "^10.6",
         "orchestra/testbench-core": "^10.7",
-        "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^12.5",
         "rector/rector": "^2.1"
     },
@@ -39,16 +39,18 @@
         "psr-4": {
             "Support\\": "src/Support/",
             "Tooling\\": "src/Tooling/"
-        }
+        },
+        "exclude-from-classmap": [
+            "*Test.php",
+            "*TestCases.php",
+            "/tests/"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
+            "App\\": "vendor/orchestra/testbench-core/laravel/app/",
             "Tests\\": "tests/"
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {
         "sort-packages": true,
@@ -59,13 +61,13 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Support\\Database\\Eloquent\\EloquentFiltersServiceProvider"
+                "Support\\Database\\Eloquent\\Providers\\Provider"
             ]
         },
         "tooling": {
             "phpstan": "tooling/phpstan/rules.neon",
             "rector": {
-                "rules": "tooling/rector/rules.php"
+                "configured_rules": "tooling/rector/configured-rules.php"
             }
         }
     },

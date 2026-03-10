@@ -1,24 +1,24 @@
 <?php
 
-namespace Tests\Tooling\EloquentFilters\PhpStan\Rules;
+declare(strict_types=1);
+
+namespace Tooling\EloquentFilters\PhpStan\Rules;
 
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
-use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tooling\EloquentFilters\PhpStan\Rules\BuilderUsesHasFiltersTrait;
+use PHPUnit\Framework\Attributes\Test;
+use Tests\Fixtures\Tooling\Concerns\GetsFixtures;
 
+/** @extends RuleTestCase<BuilderUsesHasFiltersTrait> */
 #[CoversClass(BuilderUsesHasFiltersTrait::class)]
 class BuilderUsesHasFiltersTraitTest extends RuleTestCase
 {
+    use GetsFixtures;
+
     protected function getRule(): Rule
     {
         return new BuilderUsesHasFiltersTrait;
-    }
-
-    private function getFixturePath(string $filename): string
-    {
-        return __DIR__.'/../../../../Fixtures/'.$filename;
     }
 
     #[Test]

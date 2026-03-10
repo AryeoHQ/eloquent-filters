@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fixtures;
+namespace Tests\Fixtures\Support;
 
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tests\Fixtures\Tooling\UserBuilder;
 
 #[UseFactory(UserFactory::class)]
 class User extends Model

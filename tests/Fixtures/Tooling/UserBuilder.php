@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fixtures;
+namespace Tests\Fixtures\Tooling;
 
 use Illuminate\Database\Eloquent\Builder;
 use Support\Database\Eloquent\Attributes\Filter;
 use Support\Database\Eloquent\Contracts\Filterable;
 use Support\Database\Eloquent\HasFilters;
-use Tests\Fixtures\Role;
+use Tests\Fixtures\Support\Role;
 
 /**
  * @template TModel of \Illuminate\Database\Eloquent\Model
