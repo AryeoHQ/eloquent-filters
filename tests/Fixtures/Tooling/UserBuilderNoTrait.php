@@ -2,19 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fixtures;
+namespace Tests\Fixtures\Tooling;
 
 use Illuminate\Database\Eloquent\Builder;
 use Support\Database\Eloquent\Attributes\Filter;
-use Tests\Fixtures\Role;
+use Support\Database\Eloquent\Contracts\Filterable;
+use Tests\Fixtures\Support\Role;
 
 /**
  * @template TModel of \Illuminate\Database\Eloquent\Model
  *
  * @extends Builder<TModel>
  */
-class UserBuilderOnlyFilters extends Builder
+class UserBuilderNoTrait extends Builder implements Filterable
 {
+    public function filter(array $requestParams): static
+    {
+        return $this;
+    }
+
     #[Filter('role')]
     public function role(string|Role $role): static
     {

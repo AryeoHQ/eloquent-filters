@@ -1,24 +1,24 @@
 <?php
 
-namespace Tests\Tooling\EloquentFilters\PhpStan\Rules;
+declare(strict_types=1);
+
+namespace Tooling\EloquentFilters\PhpStan\Rules;
 
 use PHPStan\Rules\Rule;
 use PHPStan\Testing\RuleTestCase;
-use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Tooling\EloquentFilters\PhpStan\Rules\BuilderImplementsFilterableContract;
+use PHPUnit\Framework\Attributes\Test;
+use Tests\Fixtures\Tooling\Concerns\GetsFixtures;
 
+/** @extends RuleTestCase<BuilderImplementsFilterableContract> */
 #[CoversClass(BuilderImplementsFilterableContract::class)]
 class BuilderImplementsFilterableContractTest extends RuleTestCase
 {
+    use GetsFixtures;
+
     protected function getRule(): Rule
     {
         return new BuilderImplementsFilterableContract;
-    }
-
-    private function getFixturePath(string $filename): string
-    {
-        return __DIR__.'/../../../../Fixtures/'.$filename;
     }
 
     #[Test]
