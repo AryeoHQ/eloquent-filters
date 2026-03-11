@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "799608f5ed59fb7ae7a0e6cf23082b41",
+    "content-hash": "659cdb5483a0df4cdbf076db4c6645ee",
     "packages": [
         {
             "name": "aryeo/tooling-laravel",
-            "version": "0.0.27",
+            "version": "0.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AryeoHQ/tooling-laravel.git",
-                "reference": "e8b6f6cf2511d2eb07b06c1c117b690700e541ac"
+                "reference": "ae99976cb303abf0e26fe0dc0bd0547dc994b0d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AryeoHQ/tooling-laravel/zipball/e8b6f6cf2511d2eb07b06c1c117b690700e541ac",
-                "reference": "e8b6f6cf2511d2eb07b06c1c117b690700e541ac",
+                "url": "https://api.github.com/repos/AryeoHQ/tooling-laravel/zipball/ae99976cb303abf0e26fe0dc0bd0547dc994b0d0",
+                "reference": "ae99976cb303abf0e26fe0dc0bd0547dc994b0d0",
                 "shasum": ""
             },
             "require": {
@@ -89,10 +89,10 @@
             ],
             "description": "Development tooling for Laravel",
             "support": {
-                "source": "https://github.com/AryeoHQ/tooling-laravel/tree/0.0.27",
+                "source": "https://github.com/AryeoHQ/tooling-laravel/tree/0.0.28",
                 "issues": "https://github.com/AryeoHQ/tooling-laravel/issues"
             },
-            "time": "2026-03-09T14:30:42+00:00"
+            "time": "2026-03-11T13:10:21+00:00"
         },
         {
             "name": "brick/math",
@@ -3310,16 +3310,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.11.1",
+            "version": "3.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "f438fcc98f92babee98381d399c65336f3a3827f"
+                "reference": "6a7e652845bb018c668220c2a545aded8594fbbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/f438fcc98f92babee98381d399c65336f3a3827f",
-                "reference": "f438fcc98f92babee98381d399c65336f3a3827f",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/6a7e652845bb018c668220c2a545aded8594fbbf",
+                "reference": "6a7e652845bb018c668220c2a545aded8594fbbf",
                 "shasum": ""
             },
             "require": {
@@ -3411,7 +3411,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-29T09:26:29+00:00"
+            "time": "2026-03-11T17:23:39+00:00"
         },
         {
             "name": "nette/schema",
