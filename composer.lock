@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e684e76dd36cec40f572cc70ae54286",
+    "content-hash": "3ed216e73d638c38e426783f37873da9",
     "packages": [
         {
             "name": "aryeo/tooling-laravel",
-            "version": "0.0.32",
+            "version": "0.0.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AryeoHQ/tooling-laravel.git",
-                "reference": "44325dcac078d546892e9f8b606c9939c9390b6e"
+                "reference": "ffb6323569e66542df04890d04aa9a2675d43f4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AryeoHQ/tooling-laravel/zipball/44325dcac078d546892e9f8b606c9939c9390b6e",
-                "reference": "44325dcac078d546892e9f8b606c9939c9390b6e",
+                "url": "https://api.github.com/repos/AryeoHQ/tooling-laravel/zipball/ffb6323569e66542df04890d04aa9a2675d43f4d",
+                "reference": "ffb6323569e66542df04890d04aa9a2675d43f4d",
                 "shasum": ""
             },
             "require": {
@@ -89,10 +89,10 @@
             ],
             "description": "Development tooling for Laravel",
             "support": {
-                "source": "https://github.com/AryeoHQ/tooling-laravel/tree/0.0.32",
+                "source": "https://github.com/AryeoHQ/tooling-laravel/tree/0.0.33",
                 "issues": "https://github.com/AryeoHQ/tooling-laravel/issues"
             },
-            "time": "2026-03-30T13:43:51+00:00"
+            "time": "2026-03-30T15:11:13+00:00"
         },
         {
             "name": "brick/math",
@@ -355,16 +355,16 @@
         },
         {
             "name": "composer/class-map-generator",
-            "version": "1.7.1",
+            "version": "1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "8f5fa3cc214230e71f54924bd0197a3bcc705eb1"
+                "reference": "6a9c2f0970022ab00dc58c07d0685dd712f2231b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/8f5fa3cc214230e71f54924bd0197a3bcc705eb1",
-                "reference": "8f5fa3cc214230e71f54924bd0197a3bcc705eb1",
+                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/6a9c2f0970022ab00dc58c07d0685dd712f2231b",
+                "reference": "6a9c2f0970022ab00dc58c07d0685dd712f2231b",
                 "shasum": ""
             },
             "require": {
@@ -408,7 +408,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/class-map-generator/issues",
-                "source": "https://github.com/composer/class-map-generator/tree/1.7.1"
+                "source": "https://github.com/composer/class-map-generator/tree/1.7.2"
             },
             "funding": [
                 {
@@ -420,7 +420,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-12-29T13:15:25+00:00"
+            "time": "2026-03-30T15:36:56+00:00"
         },
         {
             "name": "composer/composer",
