@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^8.4",
-        "aryeo/tooling-laravel": "0.0.32",
+        "aryeo/tooling-laravel": "0.0.33",
         "laravel/framework": "^12.36",
         "nikic/php-parser": "^5.7",
         "phpstan/phpstan": "^2.1"
