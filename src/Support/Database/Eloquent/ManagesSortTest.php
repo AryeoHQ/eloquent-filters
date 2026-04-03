@@ -118,7 +118,7 @@ class ManagesSortTest extends TestCase
         $this->assertCount(2, $orderByClauses);
         $this->assertEquals('created_at', $orderByClauses[0]['column']);
         $this->assertEquals('asc', $orderByClauses[0]['direction']);
-        $this->assertEquals('id', $orderByClauses[1]['column']);
+        $this->assertEquals('users.id', $orderByClauses[1]['column']);
         $this->assertEquals('asc', $orderByClauses[1]['direction']);
 
         $users = $query->get();
@@ -151,7 +151,7 @@ class ManagesSortTest extends TestCase
         $this->assertCount(2, $orderByClauses);
         $this->assertEquals('created_at', $orderByClauses[0]['column']);
         $this->assertEquals('desc', $orderByClauses[0]['direction']);
-        $this->assertEquals('id', $orderByClauses[1]['column']);
+        $this->assertEquals('users.id', $orderByClauses[1]['column']);
         $this->assertEquals('desc', $orderByClauses[1]['direction']);
 
         $users = $query->get();
