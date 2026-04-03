@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^8.4",
+        "aryeo/primitives": "0.0.9",
         "aryeo/tooling-laravel": "0.0.33",
         "laravel/framework": "^12.36",
         "nikic/php-parser": "^5.7",
@@ -30,6 +31,10 @@
         "rector/rector": "^2.1"
     },
     "repositories": {
+        "primitives": {
+            "type": "vcs",
+            "url": "https://github.com/AryeoHQ/primitives.git"
+        },
         "tooling-laravel": {
             "type": "vcs",
             "url": "https://github.com/AryeoHQ/tooling-laravel"
