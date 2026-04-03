@@ -8,7 +8,7 @@ use Support\Primitives\Sort;
 
 trait ManagesSort
 {
-    public function sort(null|Sort|string $sort): static
+    final public function sort(null|Sort|string $sort): static
     {
         $sort = $sort === null ? $sort : Sort::make($sort);
 
