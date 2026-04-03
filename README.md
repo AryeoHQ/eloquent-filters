@@ -117,5 +117,42 @@ User::filter($request->all())
     ->get()
 ```
 
+### Applying sorts
 
+Implement the `Support\Database\Eloquent\Contracts\Sortable` contract and use the `Support\Database\Eloquent\ManagesSort` trait.
 
+```php
+use Illuminate\Database\Eloquent\Builder;
+use Support\Database\Eloquent\Contracts\Sortable;
+use Support\Database\Eloquent\ManagesSort;
+
+/**
+ * @template TModel of \Illuminate\Database\Eloquent\Model
+ *
+ * @extends Builder<TModel>
+ */
+class UserBuilder extends Builder implements Sortable
+{
+    use ManagesSort;
+
+    //..
+}
+```
+
+Then you may pass in a string, `Sort` primitive, or null value. Sort direction defaults to ascending
+but can be set to descending by prefixing with a `-` sign. It is highly recommended that allowed sorts are
+validated in the request.
+
+```php
+// incoming form request
+new Request([
+    'sort' => '-created_at'
+]);
+
+User::filter($request->validated('sort'))
+    ->get()
+```
+
+When sorting by any key besides the primary key, the primary key will automatically be appended
+as a tie-breaker ordering clause in the same direction. This ensures a deterministic ordering, even when multiple rows
+share the same value for the specified sort field.
