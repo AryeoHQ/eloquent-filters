@@ -12,12 +12,16 @@ trait ManagesSort
     {
         $sort = $sort === null ? $sort : Sort::make($sort);
 
-        return $this->when(
+        $this->when(
             $sort,
-            fn () => $this->orderBy($sort->field->toString(), $sort->direction->value)
-                ->when($sort->field->toString() !== $this->defaultKeyName(),
+            fn (self $query) => $query->orderBy($sort->field->toString(), $sort->direction->value) // @phpstan-ignore-line staticMethod.dynamicCall
+                ->when(
+                    $sort->field->toString() !== $query->defaultKeyName(),
                     // Apply tie-breaker sort
-                    fn () => $this->orderBy($this->defaultKeyName(), $sort->direction->value)),
+                    fn (self $tiebreakerQuery) => $tiebreakerQuery->orderBy($tiebreakerQuery->defaultKeyName(), $sort->direction->value) // @phpstan-ignore-line staticMethod.dynamicCall
+                ),
         );
+
+        return $this;
     }
 }
