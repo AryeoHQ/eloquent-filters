@@ -153,6 +153,6 @@ User::filter($request->validated('sort'))
     ->get()
 ```
 
-When sorting by any key besides the primary key, the primary key will automatically be appended
-as a tie-breaker ordering clause in the same direction. This ensures a deterministic ordering, even when multiple rows
-share the same value for the specified sort field.
+When sorting by any key besides the primary key, the primary key will automatically be appended as a tie-breaking
+ordering clause in the same direction. This ensures a deterministic ordering, even when multiple rows share the
+same value for the specified sort field.
