@@ -15,7 +15,7 @@ use Tests\TestCase;
 class ManagesSortTest extends TestCase
 {
     #[Test]
-    public function sort_method_proxies_to_scope_methods(): void
+    public function sort_method_applies_ascending_order_by_clause(): void
     {
         $user1 = User::factory()->create();
         $user2 = User::factory()->create();

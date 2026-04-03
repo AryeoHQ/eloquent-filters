@@ -145,11 +145,11 @@ validated in the request.
 
 ```php
 // incoming form request
-new Request([
+$request = new Request([
     'sort' => '-created_at'
 ]);
 
-User::filter($request->validated('sort'))
+User::sort($request->validated('sort'))
     ->get()
 ```
 
