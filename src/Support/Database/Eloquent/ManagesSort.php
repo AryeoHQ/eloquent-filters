@@ -14,12 +14,19 @@ trait ManagesSort
 
         $this->when(
             $sort,
-            fn (self $query) => $query->orderBy($sort->field->toString(), $sort->direction->value) // @phpstan-ignore-line staticMethod.dynamicCall
-                ->when(
-                    $sort->field->toString() !== $query->defaultKeyName(),
-                    // Apply tie-breaker sort
-                    fn (self $tiebreakerQuery) => $tiebreakerQuery->orderBy($tiebreakerQuery->defaultKeyName(), $sort->direction->value) // @phpstan-ignore-line staticMethod.dynamicCall
-                ),
+            function (self $query) use ($sort) {
+                $sortField = $sort->field->toString();
+                $model = $query->getModel();
+                $keyName = $model->getKeyName();
+                $qualifiedKeyName = $model->qualifyColumn($keyName);
+
+                return $query->orderBy($sortField, $sort->direction->value) // @phpstan-ignore-line staticMethod.dynamicCall
+                    ->when(
+                        $sortField !== $keyName && $sortField !== $qualifiedKeyName,
+                        // Apply tie-breaker sort
+                        fn (self $tiebreakerQuery) => $tiebreakerQuery->orderBy($qualifiedKeyName, $sort->direction->value) // @phpstan-ignore-line staticMethod.dynamicCall
+                    );
+            },
         );
 
         return $this;
