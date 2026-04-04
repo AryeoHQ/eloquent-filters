@@ -10,7 +10,6 @@ use Support\Database\Eloquent\Contracts\Filterable;
 use Support\Database\Eloquent\Contracts\Sortable;
 use Support\Database\Eloquent\HasFilters;
 use Support\Database\Eloquent\HasSort;
-use Tests\Fixtures\Support\Role;
 
 /**
  * @template TModel of \Illuminate\Database\Eloquent\Model
@@ -22,21 +21,9 @@ class ValidBuilder extends Builder implements Filterable, Sortable
     use HasFilters;
     use HasSort;
 
-    #[Filter('role')]
-    public function role(string|Role $role): static
+    #[Filter('tag')]
+    public function tags(string $tag): static
     {
-        return $this->where('role', $role);
-    }
-
-    #[Filter('status')]
-    public function ofStatus(string $status): static
-    {
-        return $this->where('status', $status);
-    }
-
-    #[Filter('is_new')]
-    public function isNew(): static
-    {
-        return $this->where('created_at', '>', now()->subDays(1));
+        return $this->where('tag', $tag);
     }
 }
