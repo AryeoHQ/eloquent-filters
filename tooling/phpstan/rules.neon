@@ -1,9 +1,33 @@
 services:
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\BuilderUsesHasFiltersTrait
+        class: Tooling\EloquentFilters\PhpStan\Rules\FilterableMustUseHasFilters
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\BuilderImplementsFilterableContract
+        class: Tooling\EloquentFilters\PhpStan\Rules\HasFiltersMustImplementFilterable
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\EloquentFilters\PhpStan\Rules\SortableMustUseHasSort
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\EloquentFilters\PhpStan\Rules\HasSortMustImplementSortable
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\EloquentFilters\PhpStan\Rules\FilterableMustOnlyBeOnBuilder
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\EloquentFilters\PhpStan\Rules\HasFiltersMustOnlyBeOnBuilder
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\EloquentFilters\PhpStan\Rules\SortableMustOnlyBeOnBuilder
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\EloquentFilters\PhpStan\Rules\HasSortMustOnlyBeOnBuilder
         tags:
             - phpstan.rules.rule
