@@ -21,13 +21,13 @@ trait HasSort
 
         $sort = Sort::make($sort, $direction);
         $primaryKeyQualified = str($this->getModel()->getQualifiedKeyName());
-        $sortQualified = $this->getModel()->qualifyColumn($sort->field->toString());
+        $requiresFallback = $primaryKeyQualified->toString() !== $this->getModel()->qualifyColumn($sort->field->toString());
 
         return $this->orderBy( // @phpstan-ignore staticMethod.dynamicCall, return.type
             $sort->field->toString(),
             $sort->direction->value
         )->when(
-            $sortQualified !== $primaryKeyQualified->toString(),
+            $requiresFallback,
             fn (self $query): self => $query->orderBy( // @phpstan-ignore staticMethod.dynamicCall
                 $primaryKeyQualified->toString(),
                 $sort->direction->value
