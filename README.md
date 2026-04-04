@@ -1,5 +1,5 @@
 # Eloquent Filters
-A package providing a PHP attribute for marking eloquent builder query scopes as filters for your model.
+A package providing filtering and sorting capabilities for your Eloquent builder classes.
 
 ## Installation
 ```bash
@@ -10,31 +10,9 @@ composer require aryeo/eloquent-filters
 
 Eloquent Filters are meant to be used with the `Illuminate\Database\Eloquent\Builder` classes defined on your models.
 
-### Setting up your eloquent builder class
-
-Create a new eloquent builder class that implements the `Support\Database\Eloquent\Contracts\Filterable` contract and uses the `Support\Database\Eloquent\HasFilters` trait.
-
-```php
-use Illuminate\Database\Eloquent\Builder;
-use Support\Database\Eloquent\Contracts\Filterable;
-use Support\Database\Eloquent\HasFilters;
-
-/**
- * @template TModel of \Illuminate\Database\Eloquent\Model
- *
- * @extends Builder<TModel>
- */
-class UserBuilder extends Builder implements Filterable
-{
-    use HasFilters;
-
-    //..
-}
-```
-
 ### Setting up your model
 
-Next, you need to tell your model to use the eloquent builder class
+You need to tell your model to use a custom eloquent builder class:
 
 ```php
 use Illuminate\Database\Eloquent\Model;
@@ -43,32 +21,39 @@ class User extends Model
 {
     //..
 
-    /**
-     * @return UserBuilder<User>
-     */
     public function newEloquentBuilder($query): UserBuilder
     {
-        /** @var UserBuilder<User> */
         return new UserBuilder($query);
     }
 }
 ```
 
-### Defining scopes to be used as filters
+### Filters
+
+#### Setting up your eloquent builder class
+
+Implement the `Support\Database\Eloquent\Contracts\Filterable` contract and apply the `Support\Database\Eloquent\HasFilters` trait to your eloquent builder class:
+
+```php
+use Illuminate\Database\Eloquent\Builder;
+use Support\Database\Eloquent\Contracts\Filterable;
+use Support\Database\Eloquent\HasFilters;
+
+class UserBuilder extends Builder implements Filterable
+{
+    use HasFilters;
+
+    //..
+}
+```
+
+#### Defining scopes to be used as filters
 
 Adding the `Support\Database\Eloquent\Attributes\Filter` attribute over your query scopes will register them as available filters.
 
 ```php
-use Illuminate\Database\Eloquent\Builder;
 use Support\Database\Eloquent\Attributes\Filter;
-use Support\Database\Eloquent\Contracts\Filterable;
-use Support\Database\Eloquent\HasFilters;
 
-/**
- * @template TModel of \Illuminate\Database\Eloquent\Model
- *
- * @extends Builder<TModel>
- */
 class UserBuilder extends Builder implements Filterable
 {
     use HasFilters;
@@ -93,7 +78,7 @@ class UserBuilder extends Builder implements Filterable
 }
 ```
 
-### Filtering your model
+#### Filtering your model
 
 A `filter()` method is exposed on your eloquent builder so instead of writing a query using query scope like this:
 
@@ -107,52 +92,67 @@ User::query()
 A simple array of values to filter your model can be passed into the `filter()` method. The idea is to pass the entire form request array into the filter method for easy filtering:
 
 ```php
-// incoming form request
-new Request([
-    'role' => 'admin',
-    'status' => 'active'
-]);
-
-User::filter($request->all())
-    ->get()
+class UserController
+{
+    public function index(Request $request)
+    {
+        return User::filter($request->all())->get();
+    }
+}
 ```
 
-### Applying sorts
+### Sort
 
-Implement the `Support\Database\Eloquent\Contracts\Sortable` contract and use the `Support\Database\Eloquent\ManagesSort` trait.
+The `HasSort` trait provides a `sort()` method on your eloquent builder that applies ordering based on a field name and direction.
+
+#### Setting up your eloquent builder class
+
+Implement the `Support\Database\Eloquent\Contracts\Sortable` contract and apply the `Support\Database\Eloquent\HasSort` trait to your eloquent builder class:
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
 use Support\Database\Eloquent\Contracts\Sortable;
-use Support\Database\Eloquent\ManagesSort;
+use Support\Database\Eloquent\HasSort;
 
-/**
- * @template TModel of \Illuminate\Database\Eloquent\Model
- *
- * @extends Builder<TModel>
- */
 class UserBuilder extends Builder implements Sortable
 {
-    use ManagesSort;
+    use HasSort;
 
     //..
 }
 ```
 
-Then you may pass in a string, `Sort` primitive, or null value. Sort direction defaults to ascending
-but can be set to descending by prefixing with a `-` sign. It is highly recommended that allowed sorts are
-validated in the request.
+#### Sorting your model
+
+The `sort()` method accepts a string field name, a `Text` instance, a `Sort` instance, or `null`. Prefix a string field name with `-` to sort in descending order:
 
 ```php
-// incoming form request
-$request = new Request([
-    'sort' => '-created_at'
-]);
+// Sort by name ascending
+User::sort('name')->get()
 
-User::sort($request->validated('sort'))
-    ->get()
+// Sort by name descending
+User::sort('-name')->get()
 ```
 
-When sorting by any key besides the primary key, the primary key will automatically be appended as a tie-breaking
-ordering clause in the same direction. This ensures a deterministic ordering, even when multiple rows share the
-same value for the specified sort field.
+A direction can also be passed explicitly as the second parameter, either as a `Direction` enum or a string:
+
+```php
+use Support\Primitives\Direction;
+
+User::sort('name', Direction::Desc)->get()
+
+User::sort('name', 'desc')->get()
+```
+
+When sorting by a field other than the model's primary key, a secondary sort by the primary key is automatically applied in the same direction to ensure deterministic ordering.
+
+You can also pass a `Sort` instance or `null` -- which results in no sorting being applied (helpful when the `sort` parameter is optional in a `Request`):
+
+```php
+use Support\Primitives\Direction;
+use Support\Primitives\Sort;
+
+User::sort(new Sort('name', Direction::Desc))->get()
+
+User::sort(null)->get() // no sorting applied
+```

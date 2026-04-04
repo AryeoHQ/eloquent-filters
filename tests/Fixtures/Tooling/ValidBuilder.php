@@ -7,6 +7,9 @@ namespace Tests\Fixtures\Tooling;
 use Illuminate\Database\Eloquent\Builder;
 use Support\Database\Eloquent\Attributes\Filter;
 use Support\Database\Eloquent\Contracts\Filterable;
+use Support\Database\Eloquent\Contracts\Sortable;
+use Support\Database\Eloquent\HasFilters;
+use Support\Database\Eloquent\HasSort;
 use Tests\Fixtures\Support\Role;
 
 /**
@@ -14,12 +17,10 @@ use Tests\Fixtures\Support\Role;
  *
  * @extends Builder<TModel>
  */
-class UserBuilderNoTrait extends Builder implements Filterable
+class ValidBuilder extends Builder implements Filterable, Sortable
 {
-    public function filter(array $requestParams): static
-    {
-        return $this;
-    }
+    use HasFilters;
+    use HasSort;
 
     #[Filter('role')]
     public function role(string|Role $role): static

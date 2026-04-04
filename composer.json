@@ -33,7 +33,7 @@
     "repositories": {
         "primitives": {
             "type": "vcs",
-            "url": "https://github.com/AryeoHQ/primitives.git"
+            "url": "https://github.com/AryeoHQ/primitives"
         },
         "tooling-laravel": {
             "type": "vcs",

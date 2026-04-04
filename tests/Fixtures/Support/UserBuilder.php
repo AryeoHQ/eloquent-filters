@@ -9,7 +9,7 @@ use Support\Database\Eloquent\Attributes\Filter;
 use Support\Database\Eloquent\Contracts\Filterable;
 use Support\Database\Eloquent\Contracts\Sortable;
 use Support\Database\Eloquent\HasFilters;
-use Support\Database\Eloquent\ManagesSort;
+use Support\Database\Eloquent\HasSort;
 
 /**
  * @template TModel of \Illuminate\Database\Eloquent\Model
@@ -19,7 +19,7 @@ use Support\Database\Eloquent\ManagesSort;
 class UserBuilder extends Builder implements Filterable, Sortable
 {
     use HasFilters;
-    use ManagesSort;
+    use HasSort;
 
     #[Filter('role')]
     public function role(string|Role $role): static

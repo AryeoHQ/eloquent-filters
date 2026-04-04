@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Tests\Fixtures\Tooling\UserBuilder;
+use Tests\Fixtures\Tooling\ValidBuilder;
 
 #[UseFactory(UserFactory::class)]
 class User extends Model
@@ -30,11 +30,11 @@ class User extends Model
     ];
 
     /**
-     * @return UserBuilder<User>
+     * @return ValidBuilder<User>
      */
-    public function newEloquentBuilder($query): UserBuilder
+    public function newEloquentBuilder($query): ValidBuilder
     {
-        /** @var UserBuilder<User> */
-        return new UserBuilder($query);
+        /** @var ValidBuilder<User> */
+        return new ValidBuilder($query);
     }
 }
