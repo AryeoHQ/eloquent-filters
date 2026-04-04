@@ -152,7 +152,7 @@ You can also pass a `Sort` instance or `null` -- which results in no sorting bei
 use Support\Primitives\Direction;
 use Support\Primitives\Sort;
 
-User::sort(new Sort('name', Direction::Desc))->get()
+User::sort(Sort::make('name', Direction::Desc))->get()
 
 User::sort(null)->get() // no sorting applied
 ```
