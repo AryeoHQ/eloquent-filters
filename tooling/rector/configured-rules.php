@@ -1,16 +1,19 @@
 <?php
 
-use Illuminate\Database\Eloquent\Builder;
 use Support\Database\Eloquent\Contracts\Filterable;
+use Support\Database\Eloquent\Contracts\Sortable;
 use Support\Database\Eloquent\HasFilters;
-use Tooling\Rector\Rules\AddInterfaceByClass;
+use Support\Database\Eloquent\HasSort;
+use Tooling\Rector\Rules\AddInterfaceByTrait;
 use Tooling\Rector\Rules\AddTraitByInterface;
 
 return [
-    AddInterfaceByClass::class => [
-        Builder::class => Filterable::class,
-    ],
     AddTraitByInterface::class => [
         Filterable::class => HasFilters::class,
+        Sortable::class => HasSort::class,
+    ],
+    AddInterfaceByTrait::class => [
+        HasFilters::class => Filterable::class,
+        HasSort::class => Sortable::class,
     ],
 ];

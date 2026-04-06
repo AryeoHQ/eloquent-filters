@@ -14,7 +14,7 @@ use Tests\Fixtures\Support\Role;
  *
  * @extends Builder<TModel>
  */
-class UserBuilderNoContract extends Builder
+class HasFiltersWithoutFilterable extends Builder
 {
     use HasFilters;
 
