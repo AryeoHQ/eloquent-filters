@@ -34,6 +34,12 @@ class HasFiltersMustImplementFilterableTest extends RuleTestCase
     }
 
     #[Test]
+    public function it_passes_when_has_filters_is_not_on_builder(): void
+    {
+        $this->analyse([$this->getFixturePath('HasFiltersOnNonBuilder.php')], []);
+    }
+
+    #[Test]
     public function it_fails_when_has_filters_does_not_implement_filterable(): void
     {
         $this->analyse([$this->getFixturePath('HasFiltersWithoutFilterable.php')], [

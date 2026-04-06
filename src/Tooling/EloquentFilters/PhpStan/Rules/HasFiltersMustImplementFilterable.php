@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tooling\EloquentFilters\PhpStan\Rules;
 
+use Illuminate\Database\Eloquent\Builder;
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
@@ -20,7 +21,8 @@ final class HasFiltersMustImplementFilterable extends Rule
 {
     public function shouldHandle(Node $node, Scope $scope): bool
     {
-        return $this->inherits($node, HasFilters::class)
+        return $this->inherits($node, Builder::class)
+            && $this->inherits($node, HasFilters::class)
             && $this->doesNotInherit($node, Filterable::class);
     }
 

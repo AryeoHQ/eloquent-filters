@@ -34,6 +34,12 @@ class SortableMustUseHasSortTest extends RuleTestCase
     }
 
     #[Test]
+    public function it_passes_when_sortable_is_not_on_builder(): void
+    {
+        $this->analyse([$this->getFixturePath('SortableOnNonBuilder.php')], []);
+    }
+
+    #[Test]
     public function it_fails_when_sortable_does_not_use_has_sort(): void
     {
         $this->analyse([$this->getFixturePath('SortableWithoutHasSort.php')], [
