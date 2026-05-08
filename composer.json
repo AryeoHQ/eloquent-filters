@@ -17,8 +17,8 @@
     ],
     "require": {
         "php": "^8.4",
-        "aryeo/primitives": "0.0.10",
-        "aryeo/tooling-laravel": "0.0.36",
+        "aryeo/primitives": "0.0.11",
+        "aryeo/tooling-laravel": "0.0.37",
         "laravel/framework": "^12.36",
         "nikic/php-parser": "^5.7",
         "phpstan/phpstan": "^2.1"
@@ -70,9 +70,22 @@
             ]
         },
         "tooling": {
-            "phpstan": "tooling/phpstan/rules.neon",
+            "phpstan": {
+                "rules": "tooling/phpstan/rules.neon",
+                "config": {
+                    "paths": ["src", "tests/Fixtures/Support"]
+                }
+            },
             "rector": {
-                "configured_rules": "tooling/rector/configured-rules.php"
+                "configured_rules": "tooling/rector/configured-rules.php",
+                "config": {
+                    "paths": ["src"]
+                }
+            },
+            "pint": {
+                "config": {
+                    "paths": ["src", "tests"]
+                }
             }
         }
     },
