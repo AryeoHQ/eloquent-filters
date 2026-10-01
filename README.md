@@ -1,4 +1,8 @@
 # Eloquent Filters
+
+> **Deprecated.** This package has been superseded by [`aryeo/eloquent-search`](https://github.com/aryeohq/eloquent-search).
+> Migrate imports from `Support\Database\Eloquent\*` to `Support\Search\Database\*`. No further releases will be made here.
+
 A package providing filtering and sorting capabilities for your Eloquent builder classes.
 
 ## Installation
