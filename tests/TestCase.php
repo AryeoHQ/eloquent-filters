@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\WithCachedConfig;
 use Illuminate\Foundation\Testing\WithCachedRoutes;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench;
-use Support\Database\Eloquent\Providers\Provider;
+use Support\Search\Database\Providers\Provider;
 
 abstract class TestCase extends Testbench\TestCase
 {
