@@ -1,14 +1,14 @@
-# Eloquent Filters
+# Eloquent Search
 A package providing filtering and sorting capabilities for your Eloquent builder classes.
 
 ## Installation
 ```bash
-composer require aryeo/eloquent-filters
+composer require aryeo/eloquent-search
 ```
 
 ## Usage
 
-Eloquent Filters are meant to be used with the `Illuminate\Database\Eloquent\Builder` classes defined on your models.
+Eloquent Search is meant to be used with the `Illuminate\Database\Eloquent\Builder` classes defined on your models.
 
 ### Setting up your model
 
@@ -32,12 +32,12 @@ class User extends Model
 
 #### Setting up your eloquent builder class
 
-Implement the `Support\Database\Eloquent\Contracts\Filterable` contract and apply the `Support\Database\Eloquent\HasFilters` trait to your eloquent builder class:
+Implement the `Support\Search\Database\Contracts\Filterable` contract and apply the `Support\Search\Database\Provides\HasFilters` trait to your eloquent builder class:
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
-use Support\Database\Eloquent\Contracts\Filterable;
-use Support\Database\Eloquent\HasFilters;
+use Support\Search\Database\Contracts\Filterable;
+use Support\Search\Database\Provides\HasFilters;
 
 class UserBuilder extends Builder implements Filterable
 {
@@ -49,10 +49,10 @@ class UserBuilder extends Builder implements Filterable
 
 #### Defining scopes to be used as filters
 
-Adding the `Support\Database\Eloquent\Attributes\Filter` attribute over your query scopes will register them as available filters.
+Adding the `Support\Search\Attributes\Filter` attribute over your query scopes will register them as available filters.
 
 ```php
-use Support\Database\Eloquent\Attributes\Filter;
+use Support\Search\Attributes\Filter;
 
 class UserBuilder extends Builder implements Filterable
 {
@@ -107,12 +107,12 @@ The `HasSort` trait provides a `sort()` method on your eloquent builder that app
 
 #### Setting up your eloquent builder class
 
-Implement the `Support\Database\Eloquent\Contracts\Sortable` contract and apply the `Support\Database\Eloquent\HasSort` trait to your eloquent builder class:
+Implement the `Support\Search\Database\Contracts\Sortable` contract and apply the `Support\Search\Database\Provides\HasSort` trait to your eloquent builder class:
 
 ```php
 use Illuminate\Database\Eloquent\Builder;
-use Support\Database\Eloquent\Contracts\Sortable;
-use Support\Database\Eloquent\HasSort;
+use Support\Search\Database\Contracts\Sortable;
+use Support\Search\Database\Provides\HasSort;
 
 class UserBuilder extends Builder implements Sortable
 {

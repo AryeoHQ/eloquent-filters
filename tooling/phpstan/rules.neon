@@ -1,33 +1,33 @@
 services:
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\FilterableMustUseHasFilters
+        class: Tooling\Search\Database\PhpStan\Rules\FilterableMustUseHasFilters
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\HasFiltersMustImplementFilterable
+        class: Tooling\Search\Database\PhpStan\Rules\HasFiltersMustImplementFilterable
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\SortableMustUseHasSort
+        class: Tooling\Search\Database\PhpStan\Rules\SortableMustUseHasSort
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\HasSortMustImplementSortable
+        class: Tooling\Search\Database\PhpStan\Rules\HasSortMustImplementSortable
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\FilterableMustOnlyBeOnBuilder
+        class: Tooling\Search\Database\PhpStan\Rules\FilterableMustOnlyBeOnBuilder
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\HasFiltersMustOnlyBeOnBuilder
+        class: Tooling\Search\Database\PhpStan\Rules\HasFiltersMustOnlyBeOnBuilder
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\SortableMustOnlyBeOnBuilder
+        class: Tooling\Search\Database\PhpStan\Rules\SortableMustOnlyBeOnBuilder
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\EloquentFilters\PhpStan\Rules\HasSortMustOnlyBeOnBuilder
+        class: Tooling\Search\Database\PhpStan\Rules\HasSortMustOnlyBeOnBuilder
         tags:
             - phpstan.rules.rule

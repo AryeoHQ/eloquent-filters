@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55299bf9dcd927d426ec22268f711ac6",
+    "content-hash": "2f748ddc3e8736dedefaca64c4726acf",
     "packages": [
         {
             "name": "aryeo/primitives",
             "version": "0.0.12",
             "source": {
                 "type": "git",
-                "url": "git@github.com:AryeoHQ/primitives.git",
+                "url": "https://github.com/AryeoHQ/primitives.git",
                 "reference": "58fb99e90d56bf7b927bbd750789324b8a0652c6"
             },
             "dist": {
@@ -108,7 +108,7 @@
             "version": "0.0.39",
             "source": {
                 "type": "git",
-                "url": "git@github.com:AryeoHQ/tooling-laravel.git",
+                "url": "https://github.com/AryeoHQ/tooling-laravel.git",
                 "reference": "9304a2b6c8be3f20a1f2300748e96c557fd3ec1f"
             },
             "dist": {
@@ -10951,5 +10951,5 @@
         "php": "^8.4"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

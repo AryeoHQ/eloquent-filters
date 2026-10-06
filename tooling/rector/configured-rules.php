@@ -1,9 +1,9 @@
 <?php
 
-use Support\Database\Eloquent\Contracts\Filterable;
-use Support\Database\Eloquent\Contracts\Sortable;
-use Support\Database\Eloquent\HasFilters;
-use Support\Database\Eloquent\HasSort;
+use Support\Search\Database\Contracts\Filterable;
+use Support\Search\Database\Contracts\Sortable;
+use Support\Search\Database\Provides\HasFilters;
+use Support\Search\Database\Provides\HasSort;
 use Tooling\Rector\Rules\AddInterfaceByTrait;
 use Tooling\Rector\Rules\AddTraitByInterface;
 

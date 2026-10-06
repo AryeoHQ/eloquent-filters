@@ -1,12 +1,12 @@
 {
-    "name": "aryeo/eloquent-filters",
-    "description": "A package to add filters to Eloquent query builder scopes.",
+    "name": "aryeo/eloquent-search",
+    "description": "A package to add search, filtering, and sorting to Eloquent models.",
     "keywords": [
         "Aryeo",
         "laravel",
         "eloquent"
     ],
-    "homepage": "https://github.com/aryeohq/eloquent-filters",
+    "homepage": "https://github.com/aryeohq/eloquent-search",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -66,7 +66,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Support\\Database\\Eloquent\\Providers\\Provider"
+                "Support\\Search\\Database\\Providers\\Provider"
             ]
         },
         "tooling": {
