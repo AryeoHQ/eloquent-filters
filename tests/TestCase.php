@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\WithCachedConfig;
 use Illuminate\Foundation\Testing\WithCachedRoutes;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench;
-use Support\Search\Database\Providers\Provider;
+use Support\Search\Providers\Provider;
 
 abstract class TestCase extends Testbench\TestCase
 {
@@ -25,6 +25,12 @@ abstract class TestCase extends Testbench\TestCase
             $table->uuid('id')->primary();
             $table->string('role');
             $table->string('status');
+            $table->timestamps();
+        });
+
+        Schema::create('companies', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
