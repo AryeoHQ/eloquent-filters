@@ -19,7 +19,12 @@
         "php": "^8.4",
         "aryeo/primitives": "0.0.12",
         "aryeo/tooling-laravel": "0.0.39",
+        "directorytree/opensearch-adapter": "^1.2",
+        "directorytree/opensearch-client": "^1.0",
+        "directorytree/opensearch-migrations": "^1.1",
+        "directorytree/opensearch-scout-driver": "^1.1",
         "laravel/framework": "^12.36",
+        "laravel/scout": "^10",
         "nikic/php-parser": "^5.7",
         "phpstan/phpstan": "^2.1"
     },
@@ -60,13 +65,14 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "aryeo/tooling-laravel": true
+            "aryeo/tooling-laravel": true,
+            "php-http/discovery": true
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Support\\Search\\Database\\Providers\\Provider"
+                "Support\\Search\\Providers\\Provider"
             ]
         },
         "tooling": {
