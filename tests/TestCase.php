@@ -32,6 +32,7 @@ abstract class TestCase extends Testbench\TestCase
             $table->id();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

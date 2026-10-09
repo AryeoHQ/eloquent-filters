@@ -1,33 +1,65 @@
 services:
     -
-        class: Tooling\Search\Database\PhpStan\Rules\FilterableMustUseHasFilters
+        class: Tooling\Search\PhpStan\Database\FilterableMustUseHasFilters
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\Search\Database\PhpStan\Rules\HasFiltersMustImplementFilterable
+        class: Tooling\Search\PhpStan\Database\HasFiltersMustImplementFilterable
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\Search\Database\PhpStan\Rules\SortableMustUseHasSort
+        class: Tooling\Search\PhpStan\Database\SortableMustUseHasSort
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\Search\Database\PhpStan\Rules\HasSortMustImplementSortable
+        class: Tooling\Search\PhpStan\Database\HasSortMustImplementSortable
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\Search\Database\PhpStan\Rules\FilterableMustOnlyBeOnBuilder
+        class: Tooling\Search\PhpStan\Database\FilterableMustOnlyBeOnBuilder
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\Search\Database\PhpStan\Rules\HasFiltersMustOnlyBeOnBuilder
+        class: Tooling\Search\PhpStan\Database\HasFiltersMustOnlyBeOnBuilder
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\Search\Database\PhpStan\Rules\SortableMustOnlyBeOnBuilder
+        class: Tooling\Search\PhpStan\Database\SortableMustOnlyBeOnBuilder
         tags:
             - phpstan.rules.rule
     -
-        class: Tooling\Search\Database\PhpStan\Rules\HasSortMustOnlyBeOnBuilder
+        class: Tooling\Search\PhpStan\Database\HasSortMustOnlyBeOnBuilder
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\Search\PhpStan\Scout\ScoutSearchableMustUseInteractsWithSearchEngine
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\Search\PhpStan\Scout\SearchableMustOnlyBeOnModel
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\Search\PhpStan\Scout\SearchableMustUseInteractsWithSearchEngine
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\Search\PhpStan\Scout\InteractsWithSearchEngineMustOnlyBeOnModel
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\Search\PhpStan\Scout\InteractsWithSearchEngineMustImplementSearchable
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\Search\PhpStan\Scout\ScoutQueueMustOnlyBeOnSearchable
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\Search\PhpStan\Scout\ScoutConnectionMustOnlyBeOnSearchable
+        tags:
+            - phpstan.rules.rule
+    -
+        class: Tooling\Search\PhpStan\Scout\UseScoutBuilderMustReferenceScoutBuilder
         tags:
             - phpstan.rules.rule

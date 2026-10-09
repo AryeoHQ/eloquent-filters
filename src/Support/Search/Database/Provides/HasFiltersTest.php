@@ -7,8 +7,8 @@ namespace Support\Search\Database\Provides;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\Fixtures\Support\Database\Role;
-use Tests\Fixtures\Support\Database\User;
+use Tests\Fixtures\Support\Database\Users\Role;
+use Tests\Fixtures\Support\Database\Users\User;
 use Tests\TestCase;
 
 #[CoversTrait(HasFilters::class)]

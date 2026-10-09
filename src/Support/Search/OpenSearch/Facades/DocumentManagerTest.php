@@ -9,7 +9,7 @@ use DirectoryTree\OpenSearchAdapter\Documents\DocumentManagerInterface;
 use Orchestra\Testbench\Attributes\WithConfig;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\Fixtures\Support\Scout\Company;
+use Tests\Fixtures\Support\Scout\Agencies\Agency;
 use Tests\TestCase;
 
 #[CoversClass(DocumentManager::class)]
@@ -33,13 +33,13 @@ class DocumentManagerTest extends TestCase
         IndexManager::fake();
         $documents = DocumentManager::fake();
 
-        $company = Company::factory()->create();
+        $agency = Agency::factory()->create();
 
         $documents->assertIndexed(
-            $company->searchableAs(),
+            $agency->searchableAs(),
             [
-                new Document((string) $company->getScoutKey(),
-                    $company->toSearchableArray()),
+                new Document((string) $agency->getScoutKey(),
+                    $agency->toSearchableArray()),
             ]
         );
     }
@@ -50,13 +50,13 @@ class DocumentManagerTest extends TestCase
         IndexManager::fake();
         $documents = DocumentManager::fake();
 
-        $company = Company::factory()->create();
+        $agency = Agency::factory()->create();
 
-        $company->delete();
+        $agency->delete();
 
         $documents->assertDeleted(
-            $company->searchableAs(),
-            [(string) $company->getScoutKey()]
+            $agency->searchableAs(),
+            [(string) $agency->getScoutKey()]
         );
     }
 }
