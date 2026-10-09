@@ -7,7 +7,7 @@ namespace Tests\Fixtures\Tooling\Database;
 use Illuminate\Database\Eloquent\Builder;
 use Support\Search\Attributes\Filter;
 use Support\Search\Database\Provides\HasFilters;
-use Tests\Fixtures\Support\Database\Role;
+use Tests\Fixtures\Support\Database\Users\Role;
 
 /**
  * @template TModel of \Illuminate\Database\Eloquent\Model

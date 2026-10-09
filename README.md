@@ -1,5 +1,5 @@
 # Eloquent Search
-A package providing filtering and sorting capabilities for your Eloquent builder classes.
+A package providing filtering, sorting, and search for your Eloquent models.
 
 ## Installation
 ```bash
@@ -15,16 +15,13 @@ Eloquent Search is meant to be used with the `Illuminate\Database\Eloquent\Build
 You need to tell your model to use a custom eloquent builder class:
 
 ```php
+use Illuminate\Database\Eloquent\Attributes\UseEloquentBuilder;
 use Illuminate\Database\Eloquent\Model;
 
+#[UseEloquentBuilder(UserBuilder::class)]
 class User extends Model
 {
     //..
-
-    public function newEloquentBuilder($query): UserBuilder
-    {
-        return new UserBuilder($query);
-    }
 }
 ```
 
@@ -155,4 +152,56 @@ use Support\Primitives\Sort;
 User::sort(Sort::make('name', Direction::Desc))->get()
 
 User::sort(null)->get() // no sorting applied
+```
+
+### Search
+
+Search is built on [Laravel Scout](https://laravel.com/docs/scout) with an OpenSearch driver. The package registers Scout and the OpenSearch driver for you, so set `scout.driver` to `opensearch` and you're ready.
+
+#### Setting up your model
+
+Implement the `Support\Search\Scout\Contracts\Searchable` contract and use the `Support\Search\Scout\Provides\InteractsWithSearchEngine` trait. Use this trait instead of Scout's own `Searchable` trait. It wraps Scout's trait and also reads the attributes below. PHPStan will flag a model that uses Scout's trait directly.
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Support\Search\Scout\Contracts\Searchable;
+use Support\Search\Scout\Provides\InteractsWithSearchEngine;
+
+class Company extends Model implements Searchable
+{
+    use InteractsWithSearchEngine;
+}
+```
+
+#### Attributes
+
+Scout normally makes you override methods to change a few per-model settings. With this trait you can use attributes instead:
+
+```php
+use Support\Search\Scout\Attributes\ScoutConnection;
+use Support\Search\Scout\Attributes\ScoutQueue;
+use Support\Search\Scout\Attributes\UseScoutBuilder;
+
+#[UseScoutBuilder(CompanySearchBuilder::class)]
+#[ScoutQueue('search')]
+#[ScoutConnection('redis')]
+class Company extends Model implements Searchable
+{
+    use InteractsWithSearchEngine;
+}
+```
+
+- `#[UseScoutBuilder]` sets the builder `Company::search()` returns. It must extend `Laravel\Scout\Builder`.
+- `#[ScoutQueue]` and `#[ScoutConnection]` set where the sync job goes. They only matter when `scout.queue` is on. With it off, Scout syncs right away and there's no job.
+
+Leave an attribute off and you get Scout's default. Attributes don't carry over to subclasses, so a child model that wants them has to declare its own.
+
+#### Testing
+
+The `Support\Search\OpenSearch\Facades\DocumentManager` and `IndexManager` facades each have a `fake()` method, so tests don't need a running OpenSearch:
+
+```php
+use Support\Search\OpenSearch\Facades\DocumentManager;
+
+$documents = DocumentManager::fake();
 ```

@@ -2,24 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fixtures\Tooling\Database;
+namespace Tests\Fixtures\Support\Database\Users\Builders;
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent as Base;
 use Support\Search\Attributes\Filter;
 use Support\Search\Database\Contracts\Filterable;
+use Support\Search\Database\Contracts\Sortable;
+use Support\Search\Database\Provides\HasFilters;
+use Support\Search\Database\Provides\HasSort;
 use Tests\Fixtures\Support\Database\Users\Role;
 
 /**
  * @template TModel of \Illuminate\Database\Eloquent\Model
  *
- * @extends Builder<TModel>
+ * @extends Base\Builder<TModel>
  */
-class FilterableWithoutHasFilters extends Builder implements Filterable
+class Eloquent extends Base\Builder implements Filterable, Sortable
 {
-    public function filter(array $requestParams): static
-    {
-        return $this;
-    }
+    use HasFilters;
+    use HasSort;
 
     #[Filter('role')]
     public function role(string|Role $role): static

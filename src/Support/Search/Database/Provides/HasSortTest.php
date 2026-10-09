@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Support\Primitives\Direction;
 use Support\Primitives\Sort;
 use Support\Primitives\Text;
-use Tests\Fixtures\Support\Database\User;
+use Tests\Fixtures\Support\Database\Users\User;
 use Tests\TestCase;
 
 #[CoversTrait(HasSort::class)]

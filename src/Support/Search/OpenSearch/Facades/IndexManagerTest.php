@@ -8,7 +8,7 @@ use DirectoryTree\OpenSearchAdapter\Indices\IndexManagerInterface;
 use Orchestra\Testbench\Attributes\WithConfig;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\Fixtures\Support\Scout\Company;
+use Tests\Fixtures\Support\Scout\Agencies\Agency;
 use Tests\TestCase;
 
 #[CoversClass(IndexManager::class)]
@@ -29,9 +29,9 @@ class IndexManagerTest extends TestCase
         DocumentManager::fake();
         $indices = IndexManager::fake();
 
-        $this->artisan('scout:index', ['name' => Company::class])->assertSuccessful();
+        $this->artisan('scout:index', ['name' => Agency::class])->assertSuccessful();
 
-        $indices->assertCreated((new Company)->searchableAs());
+        $indices->assertCreated(Agency::factory()->make()->searchableAs());
     }
 
     #[Test]
@@ -40,8 +40,10 @@ class IndexManagerTest extends TestCase
         DocumentManager::fake();
         $indices = IndexManager::fake();
 
-        $this->artisan('scout:delete-index', ['name' => (new Company)->searchableAs()])->assertSuccessful();
+        $index = Agency::factory()->make()->searchableAs();
 
-        $indices->assertDeleted((new Company)->searchableAs());
+        $this->artisan('scout:delete-index', ['name' => $index])->assertSuccessful();
+
+        $indices->assertDeleted($index);
     }
 }
